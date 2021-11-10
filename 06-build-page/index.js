@@ -2,15 +2,21 @@ const fs = require('fs');
 const fsPromises = require('fs/promises');
 const path = require('path');
 
-//---------------creat project-dist
+//---------------create project-dist
 
 const projectPathNew = path.join(__dirname, 'project-dist');
 
 const createFolder = (output) => {
-  fsPromises.mkdir(output, (err) => {
-    if (err) return;
+  // fsPromises.mkdir(output, (err) => {
+  //   if (err) return;
+  // });
+  fs.mkdir(output, { recursive: true }, (err) => {
+    if (err) throw err;
+    console.log('Project-dist create, thank you for understanding');
+
   });
 }
+
 createFolder(projectPathNew)
 
 //-----------bundle.css
